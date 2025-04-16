@@ -26,6 +26,15 @@ app.get('/api/recipes/:id', (req, res) =>{
     if(!recipe) res.status(404).send("Recipe Ingredient is Not Found!!")
     res.send(recipe)
 })
+
+app.post('/api/recipes', (req, res) =>{
+    const recipe = {
+        id: recipes.length+1,
+        name: req.body.name
+    };
+    recipes.push(recipe);
+    res.send(recipe);
+})
 //Query string parameter
 app.get('/api/posts/:year/:month',(req, res) =>{
     res.send(req.query)
